@@ -31,7 +31,5 @@ public class OperadoresAritmeticos1 {
         System.out.println(Modul);
         System.out.println(Poten);
         System.out.println(Rayiz);
-        
-        pavel rodrigo yupanqui
     }
 }
