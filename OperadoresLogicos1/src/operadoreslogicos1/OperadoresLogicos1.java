@@ -18,3 +18,5 @@ public class OperadoresLogicos1 {
         System.out.println("NOT: " + resultadoNot);
     }   
 }
+
+//Pavel Rodrigo Yupanqui Choqueneira

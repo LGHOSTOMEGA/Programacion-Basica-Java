@@ -52,3 +52,5 @@ public class CicloWhile {
         }
     }    
 }
+
+//Pavel Rodrigo Yupanqui Choqueneira

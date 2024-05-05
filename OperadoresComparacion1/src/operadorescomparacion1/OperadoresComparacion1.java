@@ -29,3 +29,5 @@
             System.out.println("El numero 15 es diferente que 35: " + Result6);
         }
     }
+
+//Pavel Rodrigo Yupanqui Choqueneira
