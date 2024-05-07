@@ -10,6 +10,9 @@
 import javax.script.ScriptEngineManager;
 
 public class Calculadora extends javax.swing.JFrame {
+    float primerNumero;
+    float segundoNumero;
+    String[] signos = {"+", "-", "/", "*"};
     String expresion;
     /**
      * Creates new form Calculadora
@@ -59,7 +62,6 @@ public class Calculadora extends javax.swing.JFrame {
 
         tfResultado.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         tfResultado.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        tfResultado.setText("0");
         tfResultado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfResultadoActionPerformed(evt);
@@ -68,9 +70,19 @@ public class Calculadora extends javax.swing.JFrame {
 
         btnDivi.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnDivi.setText("/");
+        btnDivi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDiviActionPerformed(evt);
+            }
+        });
 
         btnMulti.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnMulti.setText("X");
+        btnMulti.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMultiActionPerformed(evt);
+            }
+        });
 
         BtnDeleteOne.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         BtnDeleteOne.setText("C");
@@ -90,30 +102,70 @@ public class Calculadora extends javax.swing.JFrame {
 
         btnDeleteAll.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnDeleteAll.setText("CE");
+        btnDeleteAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteAllActionPerformed(evt);
+            }
+        });
 
         btn1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn1.setText("1");
+        btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn1ActionPerformed(evt);
+            }
+        });
 
         btn4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn4.setText("4");
+        btn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn4ActionPerformed(evt);
+            }
+        });
 
         btn7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn7.setText("7");
+        btn7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn7ActionPerformed(evt);
+            }
+        });
 
         btnSIgno.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnSIgno.setText("+-");
 
         btn2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn2.setText("2");
+        btn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn2ActionPerformed(evt);
+            }
+        });
 
         btn5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn5.setText("5");
+        btn5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn5ActionPerformed(evt);
+            }
+        });
 
         btn6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn6.setText("6");
+        btn6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn6ActionPerformed(evt);
+            }
+        });
 
         btn3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn3.setText("3");
+        btn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn3ActionPerformed(evt);
+            }
+        });
 
         btnPunto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnPunto.setText(".");
@@ -125,15 +177,35 @@ public class Calculadora extends javax.swing.JFrame {
 
         btnResta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnResta.setText("-");
+        btnResta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRestaActionPerformed(evt);
+            }
+        });
 
         btn9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn9.setText("9");
+        btn9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn9ActionPerformed(evt);
+            }
+        });
 
         btnSum.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnSum.setText("+");
+        btnSum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSumActionPerformed(evt);
+            }
+        });
 
         btnIgual.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnIgual.setText("=");
+        btnIgual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIgualActionPerformed(evt);
+            }
+        });
 
         btn0.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn0.setText("0");
@@ -145,6 +217,11 @@ public class Calculadora extends javax.swing.JFrame {
 
         btn8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn8.setText("8");
+        btn8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn8ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -264,7 +341,7 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_tfResultadoActionPerformed
 
     private void btn0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn0ActionPerformed
-        // TODO add your handling code here:
+        tfResultado.setText(tfResultado.getText()+"0");
     }//GEN-LAST:event_btn0ActionPerformed
 
     private void BtnDeleteOneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDeleteOneActionPerformed
@@ -276,10 +353,92 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void btnPuntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPuntoActionPerformed
-        // TODO add your handling code here:
+        tfResultado.setText(tfResultado.getText()+".");
     }//GEN-LAST:event_btnPuntoActionPerformed
 
+    private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
+        tfResultado.setText(tfResultado.getText()+"1");
+    }//GEN-LAST:event_btn1ActionPerformed
+
+    private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
+        tfResultado.setText(tfResultado.getText()+"2");
+    }//GEN-LAST:event_btn2ActionPerformed
+
+    private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
+        tfResultado.setText(tfResultado.getText()+"3");
+    }//GEN-LAST:event_btn3ActionPerformed
+
+    private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
+        tfResultado.setText(tfResultado.getText()+"4");
+    }//GEN-LAST:event_btn4ActionPerformed
+
+    private void btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
+        tfResultado.setText(tfResultado.getText()+"5");
+    }//GEN-LAST:event_btn5ActionPerformed
+
+    private void btn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn6ActionPerformed
+        tfResultado.setText(tfResultado.getText()+"6");
+    }//GEN-LAST:event_btn6ActionPerformed
+
+    private void btn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn7ActionPerformed
+        tfResultado.setText(tfResultado.getText()+"7");
+    }//GEN-LAST:event_btn7ActionPerformed
+
+    private void btn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn8ActionPerformed
+        tfResultado.setText(tfResultado.getText()+"8");
+    }//GEN-LAST:event_btn8ActionPerformed
+
+    private void btn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn9ActionPerformed
+        tfResultado.setText(tfResultado.getText()+"9");
+    }//GEN-LAST:event_btn9ActionPerformed
+
+    private void btnDeleteAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteAllActionPerformed
+        tfResultado.setText("");
+    }//GEN-LAST:event_btnDeleteAllActionPerformed
+
+    private void btnSumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSumActionPerformed
+        tfResultado.setText(tfResultado.getText()+"+");
+    }//GEN-LAST:event_btnSumActionPerformed
+
+    private void btnRestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestaActionPerformed
+        tfResultado.setText(tfResultado.getText()+"-");
+    }//GEN-LAST:event_btnRestaActionPerformed
+
+    private void btnMultiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMultiActionPerformed
+        tfResultado.setText(tfResultado.getText()+"*");
+    }//GEN-LAST:event_btnMultiActionPerformed
+
+    private void btnDiviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiviActionPerformed
+        tfResultado.setText(tfResultado.getText()+"/");
+    }//GEN-LAST:event_btnDiviActionPerformed
+
+    private void btnIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIgualActionPerformed
+        operacion(tfResultado.getText());
+    }//GEN-LAST:event_btnIgualActionPerformed
+
+    
+    private void operacion(String sentencia){
+        if(sentencia.contains("+")){
+            String[] numero = sentencia.split("\\+");
+            primerNumero = Float.parseFloat(numero[0]);
+            segundoNumero = Float.parseFloat(numero[1]);
+            tfResultado.setText(String.valueOf(primerNumero + segundoNumero));
+        } else if(sentencia.contains("-")){
+            String[] numero = sentencia.split("\\-");
+            primerNumero = Float.parseFloat(numero[0]);
+            segundoNumero = Float.parseFloat(numero[1]);
+            tfResultado.setText(String.valueOf(primerNumero - segundoNumero));
+        } else if(sentencia.contains("-")){
+            String[] numero = sentencia.split("\\*");
+            primerNumero = Float.parseFloat(numero[0]);
+            segundoNumero = Float.parseFloat(numero[1]);
+            tfResultado.setText(String.valueOf(primerNumero * segundoNumero));
+        }
+    }
     /**
+     * 
+     * 
+     * 
      * @param args the command line arguments
      */
     public static void main(String args[]) {
