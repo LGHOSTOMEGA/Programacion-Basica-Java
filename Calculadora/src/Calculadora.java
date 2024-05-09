@@ -20,11 +20,6 @@ public class Calculadora extends javax.swing.JFrame {
     public Calculadora() {
         initComponents();
     }
-    
-    private void gg(){
-        expresion = "4*5*3*2*3-5";
-        ScriptEngineManager manager = new ScriptEngineManager();
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -349,7 +344,12 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnDeleteOneActionPerformed
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
-        // TODO add your handling code here:
+        int longitud = tfResultado.getText().length();
+        if (tfResultado.getText().length() <= 0){
+            tfResultado.setText("");
+        } else {
+            tfResultado.setText(tfResultado.getText().substring(0,longitud-1));
+        } 
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void btnPuntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPuntoActionPerformed
@@ -397,18 +397,22 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteAllActionPerformed
 
     private void btnSumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSumActionPerformed
+        operacion(tfResultado.getText());
         tfResultado.setText(tfResultado.getText()+"+");
     }//GEN-LAST:event_btnSumActionPerformed
 
     private void btnRestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestaActionPerformed
+        operacion(tfResultado.getText());
         tfResultado.setText(tfResultado.getText()+"-");
     }//GEN-LAST:event_btnRestaActionPerformed
 
     private void btnMultiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMultiActionPerformed
+        operacion(tfResultado.getText());
         tfResultado.setText(tfResultado.getText()+"*");
     }//GEN-LAST:event_btnMultiActionPerformed
 
     private void btnDiviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiviActionPerformed
+        operacion(tfResultado.getText());
         tfResultado.setText(tfResultado.getText()+"/");
     }//GEN-LAST:event_btnDiviActionPerformed
 
@@ -428,11 +432,16 @@ public class Calculadora extends javax.swing.JFrame {
             primerNumero = Float.parseFloat(numero[0]);
             segundoNumero = Float.parseFloat(numero[1]);
             tfResultado.setText(String.valueOf(primerNumero - segundoNumero));
-        } else if(sentencia.contains("-")){
+        } else if(sentencia.contains("*")){
             String[] numero = sentencia.split("\\*");
             primerNumero = Float.parseFloat(numero[0]);
             segundoNumero = Float.parseFloat(numero[1]);
             tfResultado.setText(String.valueOf(primerNumero * segundoNumero));
+        } else if(sentencia.contains("/")){
+            String[] numero = sentencia.split("/");
+            primerNumero = Float.parseFloat(numero[0]);
+            segundoNumero = Float.parseFloat(numero[1]);
+            tfResultado.setText(String.valueOf(primerNumero / segundoNumero));
         }
     }
     /**
